@@ -109,11 +109,11 @@ $SCRIPT_DIR/build-cmake.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "3.2
 checkStatus $? "build cmake"
 echoDurationInSections $START_TIME
 
-START_TIME=$(currentTimeInSeconds)
-echoSection "compile pkg-config"
-$SCRIPT_DIR/build-pkg-config.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "0.29.2" > "$WORKING_DIR/build-pkg-config.log" 2>&1
-checkStatus $? "build pkg-config"
-echoDurationInSections $START_TIME
+#START_TIME=$(currentTimeInSeconds)
+#echoSection "compile pkg-config"
+#$SCRIPT_DIR/build-pkg-config.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "0.29.2" > "$WORKING_DIR/build-pkg-config.log" 2>&1
+#checkStatus $? "build pkg-config"
+#echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
 echoSection "compile FriBidi"
@@ -176,11 +176,11 @@ $SCRIPT_DIR/build-ogg.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxxx"
 checkStatus $? "build ogg"
 echoDurationInSections $START_TIME
 
-START_TIME=$(currentTimeInSeconds)
-echoSection "compile vorbis"
-$SCRIPT_DIR/build-vorbis.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxxx" > "$WORKING_DIR/build-vorbis.log" 2>&1
-checkStatus $? "build vorbis"
-echoDurationInSections $START_TIME
+#START_TIME=$(currentTimeInSeconds)
+#echoSection "compile vorbis"
+#$SCRIPT_DIR/build-vorbis.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxxx" > "$WORKING_DIR/build-vorbis.log" 2>&1
+#checkStatus $? "build vorbis"
+#echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
 echoSection "compile aom"
