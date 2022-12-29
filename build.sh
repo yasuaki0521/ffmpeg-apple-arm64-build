@@ -2,7 +2,7 @@
 
 # Option feature set to FALSE if not rewuired and TRUE if required
 ENABLE_FFPLAY=FALSE
-ENABLE_TOPAZ=TRUE
+ENABLE_TOPAZ=FALSE
 
 # set true for dependant features, export those needed in ffmpeg build script
  
