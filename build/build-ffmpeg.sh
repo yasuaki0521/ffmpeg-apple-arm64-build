@@ -57,12 +57,17 @@ configure_build () {
   fi
 
 
+  # configureの引数の途中の行をコメントアウトすると command not found のエラーになる
   # --pkg-config-flags="--static" is required to respect the Libs.private flags of the *.pc files
-  ./configure --prefix="$4" --enable-gpl --pkg-config-flags="--static"   --pkg-config=$3/bin/pkg-config \
+  #./configure --prefix="$4" --enable-gpl --pkg-config-flags="--static"   --pkg-config=$3/bin/pkg-config \
+      #--enable-libmp3lame --enable-libopus --enable-libsoxr --enable-neon --enable-runtime-cpudetect \
+  ./configure --prefix="$4" --cc=clang --arch=arm64 --enable-gpl --pkg-config-flags="--static"   --pkg-config=$3/bin/pkg-config \
       --enable-libaom --disable-libopenh264 --enable-libx264 --enable-libx265 --enable-libvpx \
-      --enable-libmp3lame --enable-libopus --enable-neon --enable-runtime-cpudetect \
+      --enable-libmp3lame --enable-libopus --enable-libsoxr --enable-neon --enable-runtime-cpudetect \
       --enable-audiotoolbox --enable-videotoolbox --enable-libvorbis --enable-libsvtav1 \
       --enable-libass --enable-lto --enable-opencl ${FFMPEG_EXTRAS}
+       
+
 
   checkStatus $? "configuration of ${SOFTWARE} failed"
 

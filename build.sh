@@ -219,6 +219,11 @@ $SCRIPT_DIR/build-opus.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "1.3.
 checkStatus $? "build opus"
 echoDurationInSections $START_TIME
 
+START_TIME=$(currentTimeInSeconds)
+echoSection "compile sox"
+$SCRIPT_DIR/build-libsoxr.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "0.1.3" > "$WORKING_DIR/build-sox.log" 2>&1
+checkStatus $? "build sox"
+echoDurationInSections $START_TIME
 
 if [[ "${ENABLE_FFPLAY}" == "TRUE" ]]
 then
