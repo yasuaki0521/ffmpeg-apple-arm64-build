@@ -2,7 +2,7 @@
 
 # Option feature set to FALSE if not rewuired and TRUE if required
 ENABLE_FFPLAY=FALSE
-ENABLE_TOPAZ=TRUE
+ENABLE_TOPAZ=FALSE
 
 # set true for dependant features, export those needed in ffmpeg build script
  
@@ -109,11 +109,11 @@ $SCRIPT_DIR/build-cmake.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "3.2
 checkStatus $? "build cmake"
 echoDurationInSections $START_TIME
 
-START_TIME=$(currentTimeInSeconds)
-echoSection "compile pkg-config"
-$SCRIPT_DIR/build-pkg-config.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "0.29.2" > "$WORKING_DIR/build-pkg-config.log" 2>&1
-checkStatus $? "build pkg-config"
-echoDurationInSections $START_TIME
+#START_TIME=$(currentTimeInSeconds)
+#echoSection "compile pkg-config"
+#$SCRIPT_DIR/build-pkg-config.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "0.29.2" > "$WORKING_DIR/build-pkg-config.log" 2>&1
+#checkStatus $? "build pkg-config"
+#echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
 echoSection "compile FriBidi"
@@ -176,11 +176,11 @@ $SCRIPT_DIR/build-ogg.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxxx"
 checkStatus $? "build ogg"
 echoDurationInSections $START_TIME
 
-START_TIME=$(currentTimeInSeconds)
-echoSection "compile vorbis"
-$SCRIPT_DIR/build-vorbis.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxxx" > "$WORKING_DIR/build-vorbis.log" 2>&1
-checkStatus $? "build vorbis"
-echoDurationInSections $START_TIME
+#START_TIME=$(currentTimeInSeconds)
+#echoSection "compile vorbis"
+#$SCRIPT_DIR/build-vorbis.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "xxxx" > "$WORKING_DIR/build-vorbis.log" 2>&1
+#checkStatus $? "build vorbis"
+#echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
 echoSection "compile aom"
@@ -219,6 +219,11 @@ $SCRIPT_DIR/build-opus.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "1.3.
 checkStatus $? "build opus"
 echoDurationInSections $START_TIME
 
+START_TIME=$(currentTimeInSeconds)
+echoSection "compile sox"
+$SCRIPT_DIR/build-libsoxr.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$CPUS" "0.1.3" > "$WORKING_DIR/build-sox.log" 2>&1
+checkStatus $? "build sox"
+echoDurationInSections $START_TIME
 
 if [[ "${ENABLE_FFPLAY}" == "TRUE" ]]
 then
@@ -236,7 +241,7 @@ echoSection "compile ffmpeg with topaz"
 $SCRIPT_DIR/build-ffmpeg-topaz.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$OUT_DIR" "$CPUS" "5.1.0.24" > "$WORKING_DIR/build-ffmpeg-topaz.log" 2>&1
 else
 echoSection "compile ffmpeg"
-$SCRIPT_DIR/build-ffmpeg.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$OUT_DIR" "$CPUS" "5.1" > "$WORKING_DIR/build-ffmpeg.log" 2>&1
+$SCRIPT_DIR/build-ffmpeg.sh "$SCRIPT_DIR" "$WORKING_DIR" "$TOOL_DIR" "$OUT_DIR" "$CPUS" "5.0.2" > "$WORKING_DIR/build-ffmpeg.log" 2>&1
 fi
 
 checkStatus $? "build ffmpeg"
